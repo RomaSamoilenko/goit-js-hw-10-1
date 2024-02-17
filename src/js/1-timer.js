@@ -29,7 +29,7 @@ const options = {
     // перевірка на вибір майбутньої дати, а не минулої
     if (selectedDates[0] < new Date()) {
 
-      // відображення повідомленя користувачеві з бібліотеки Notiflix
+      // відображення повідомленя користувачеві з бібліотеки izitoast
       iziToast.warning({
         title: 'Caution',
         message: 'Please choose a date in the future',
@@ -101,8 +101,12 @@ btnStart.addEventListener('click', () => {
         timerHtml.style.color = 'red'; // зафарбувати текст в червоний
       }
     } else {
-      // відображення повідомленя користувачеві з бібліотеки Notiflix
-      Notiflix.Notify.success('Countdown finished');
+      // відображення повідомленя користувачеві з бібліотеки izitoast
+      iziToast.success({
+        title: 'OK',
+        message: 'Countdown finished!',
+    });
+     
       timerHtml.style.color = 'black'; // зафарбувати текст в чорний
       clearInterval(timer); // очистити таймер
     }
