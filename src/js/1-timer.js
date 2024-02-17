@@ -2,7 +2,10 @@
 import flatpickr from "flatpickr";
 // Додатковий імпорт стилів
 import "flatpickr/dist/flatpickr.min.css";
-import Notiflix from 'notiflix';
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
 
 // пошук елементів
 const text = document.querySelector('#datetime-picker');
@@ -27,7 +30,10 @@ const options = {
     if (selectedDates[0] < new Date()) {
 
       // відображення повідомленя користувачеві з бібліотеки Notiflix
-      Notiflix.Notify.failure('Please choose a date in the future');
+      iziToast.warning({
+        title: 'Caution',
+        message: 'Please choose a date in the future',
+    });
       btnStart.disabled = true; // деактивація кнопки СТАРТ
     } else {
       // якщо обрана майбутня дата - то активувати кнопку СТАРТ
